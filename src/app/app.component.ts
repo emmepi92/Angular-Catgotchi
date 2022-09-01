@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   public happyPoints: number = 100;
   public isHappy: boolean = true;
   public isDied: boolean = false;
+  public showButtonRestart: boolean = false;
 
   @ViewChild('modal')
   modal!: ElementRef;
@@ -138,6 +139,11 @@ export class AppComponent implements OnInit {
     this.isHappy = true;
     this.isDied = false;
     this.startGame();
+    this.showButtonRestart = false;
 
+  }
+
+  buttonRestart() {
+    this.showButtonRestart = true;
   }
 }
