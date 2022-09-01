@@ -19,14 +19,12 @@ export class AppComponent implements OnInit {
   modal!: ElementRef;
 
   private gameTimer = () => {
-
     if (this.hungryPoints <= 0 || this.sleepyPoints <= 0 || this.cleanPoints <= 0 || this.happyPoints <= 0) {
       clearInterval(this.interval)
       this.modal.nativeElement.click();
       this.isDied = true
     } else if (!this.isDied) {
 
-      let totalPoints: number = this.hungryPoints + this.sleepyPoints + this.cleanPoints + this.happyPoints;
       let areAllOver50 = [this.hungryPoints, this.sleepyPoints, this.cleanPoints, this.happyPoints].every(points => points > 50);
 
       if (this.hungryPoints <= 1) {
@@ -42,13 +40,10 @@ export class AppComponent implements OnInit {
         this.happyPoints -= 2;
       }
 
-      if (!areAllOver50 || totalPoints < 200) {
-        console.log('ciao')
-        console.log(this.isHappy)
+      if (!areAllOver50) {
         this.isHappy = false
-        console.log(this.isHappy)
       }
-      else if (totalPoints > 200 && areAllOver50) {
+      else if (areAllOver50) {
         this.isHappy = true
       }
     }
