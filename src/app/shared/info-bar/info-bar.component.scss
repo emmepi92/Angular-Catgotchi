@@ -1,0 +1,23 @@
+:host {
+
+  .bar {
+    height: 10px;
+    width: 150px;
+    background-color: #ccc;
+    border-radius: 10px;
+    overflow:hidden;
+    .red {
+      background-color: red;
+    }    
+    .orange {
+      background-color: orange;
+    }    
+    .green {
+      background-color: rgb(105, 189, 52);
+    }    
+    .full {
+      background-color: rgb(17, 159, 17);
+    }
+
+  }
+}

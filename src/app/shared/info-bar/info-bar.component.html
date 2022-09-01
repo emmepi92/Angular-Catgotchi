@@ -1,0 +1,13 @@
+<ng-container>
+  {{title}} {{value}}
+  <div class="bar">
+    <div [ngClass]="{
+      'red': value <= 25,
+      'orange' : (value > 25 && value <= 50),
+      'green' : (value > 50 && value <= 75),
+      'full' : value >75 
+    }" 
+    [ngStyle]="{'width.%':value}"
+    class="bar"></div>
+  </div>
+</ng-container>

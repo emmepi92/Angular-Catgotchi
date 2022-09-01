@@ -1,0 +1,105 @@
+// /* You can add global styles to this file, and also import other style files */
+// @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');v
+// body {
+// font-family: 'Pacifico', cursive;
+// }
+
+.fluid-container{
+  background-image: url(../assets/img/bg.jpg);
+  min-height: 600px;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 700px;
+
+  .header-box{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 25px;
+    text-align: center;
+    font-weight: 600;
+    padding: 30px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(5px);
+  }
+  
+  .center-box{
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 50px;
+    display: flex;
+    min-width: 700px;
+
+    .actions-box{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .info-box {
+      padding-right: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .bar{
+        height: 10px;
+        width: 150px;
+        background-color: #ccc;
+        border-radius: 10px;
+        .red{
+          width: 25%;
+          background-color: red;
+        }
+        .orange{
+          width: 50%;
+          background-color: orange;
+        }
+        .green {
+          width: 75%;
+          background-color: rgb(105, 189, 52);
+        }
+        .full {
+          width: 100%;
+          background-color: rgb(17, 159, 17);
+        }
+        
+      }
+    }
+
+    .cat-body {
+      position: relative;
+      padding-right: 50px;
+        &-img{
+          max-width: 180px;
+        }
+        .cat-head{
+          &-happy{
+            position: absolute;
+            top: 20px;
+            img {
+                max-width: 200px;
+              }
+          }
+          &-sad {
+            position: absolute;
+            top: 10px;
+            img{
+              max-width: 150px;
+            }
+          }
+        }
+      }
+  }
+}
+.fade.show {
+  background: rgba(8, 8, 8, 0.7);
+}
+.custom-btn {
+  background-color: #f8ac8a;
+  font-weight: 600;
+  // color:white;
+}
