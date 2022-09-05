@@ -1,0 +1,25 @@
+<ng-container >
+  <button type="button" style="visibility: hidden;" #modal class="btn btn-primary" data-bs-toggle="modal"
+    data-bs-target="#exampleModal">
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-body text-center">
+          <h1 style="font-size: 70px;">GAME OVER</h1>
+          <img style="max-width: 300px;" class="mt-2" src="../assets/img/dead2.jpg" alt="">
+          <p class="pt-5">Damn hooman, you let me die</p>
+        </div>
+        <div class="d-flex justify-content-around mb-4">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()"
+            data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)='restart()' data-bs-dismiss="modal" class="btn custom-btn">Play again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</ng-container>

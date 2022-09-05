@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   public isHappy: boolean = true;
   public isDied: boolean = false;
   public showButtonRestart: boolean = false;
+  public openModal: boolean = false;
 
   @ViewChild('modal')
   modal!: ElementRef;
@@ -21,7 +22,9 @@ export class AppComponent implements OnInit {
   private gameTimer = () => {
     if (this.hungryPoints <= 0 || this.sleepyPoints <= 0 || this.cleanPoints <= 0 || this.happyPoints <= 0) {
       clearInterval(this.interval)
-      this.modal.nativeElement.click();
+      // this.modal.nativeElement.click();
+      this.openModal = true
+
       this.isDied = true
     } else if (!this.isDied) {
 
@@ -126,16 +129,16 @@ export class AppComponent implements OnInit {
     }
   }
 
-  restart() {
-    this.hungryPoints = 100;
-    this.sleepyPoints = 100;
-    this.cleanPoints = 100;
-    this.happyPoints = 100;
-    this.isHappy = true;
-    this.isDied = false;
-    this.startGame();
-    this.showButtonRestart = false;
-
+  onRestart() {
+      this.hungryPoints = 100;
+      this.sleepyPoints = 100;
+      this.cleanPoints = 100;
+      this.happyPoints = 100;
+      this.isHappy = true;
+      this.isDied = false;
+      this.startGame();
+      this.showButtonRestart = false;
+      this.openModal = false;
   }
 
   buttonRestart() {
