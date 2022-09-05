@@ -70,48 +70,37 @@ export class AppComponent implements OnInit {
     clearInterval(this.interval)
   }
 
-  gimmeTuna() {
-    if (this.hungryPoints >= 95) {
-      this.hungryPoints = 100;
+  give5Points(points: number):number {
+    if (points >= 95) {
+      return 100;
     } else {
-      this.hungryPoints += 5;
+      return points + 5;
     }
-    if (this.cleanPoints >= 2) {
-      this.cleanPoints -= 2
+  }
+  losePointsCollateral(points: number, deficit: number): number {
+    if (points >= deficit) {
+      return points - deficit
+    } else {
+      return points
     }
+  }
+
+  gimmeTuna() {
+    this.hungryPoints = this.give5Points(this.hungryPoints);
+    this.cleanPoints = this.losePointsCollateral(this.cleanPoints, 2)
   }
   gimmeSleep() {
-    if (this.sleepyPoints >= 95) {
-      this.sleepyPoints = 100;
-    } else {
-      this.sleepyPoints += 5;
-    }
-    if (this.hungryPoints >= 2) {
-      this.hungryPoints -= 2
-    }
-    if (this.happyPoints >= 2) {
-      this.happyPoints -= 2
-    }
+    this.sleepyPoints = this.give5Points(this.sleepyPoints)
+    this.hungryPoints = this.losePointsCollateral(this.hungryPoints, 2)
+    this.happyPoints = this.losePointsCollateral(this.happyPoints, 2)
   }
   gimmeBath() {
-    if (this.cleanPoints >= 95) {
-      this.cleanPoints = 100;
-    } else {
-      this.cleanPoints += 5;
-    }
-    if (this.happyPoints >= 5) {
-      this.happyPoints -= 5
-    }
+    this.cleanPoints = this.give5Points(this.cleanPoints)
+    this.happyPoints = this.losePointsCollateral(this.happyPoints, 5)
   }
   gimmeRubs() {
-    if (this.happyPoints >= 95) {
-      this.happyPoints = 100;
-    } else {
-      this.happyPoints += 5;
-    }
-    if (this.hungryPoints >= 3) {
-      this.hungryPoints -= 3
-    }
+    this.happyPoints = this.give5Points(this.happyPoints)
+    this.hungryPoints = this.losePointsCollateral(this.hungryPoints, 3)
   }
 
   gimme(something: string): any {
