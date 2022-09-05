@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   public isDied: boolean = false;
   public showButtonRestart: boolean = false;
   public openModal: boolean = false;
+  private interval: any;
 
   @ViewChild('modal')
   modal!: ElementRef;
@@ -22,14 +23,11 @@ export class AppComponent implements OnInit {
   private gameTimer = () => {
     if (this.hungryPoints <= 0 || this.sleepyPoints <= 0 || this.cleanPoints <= 0 || this.happyPoints <= 0) {
       clearInterval(this.interval)
-      // this.modal.nativeElement.click();
       this.openModal = true
-
       this.isDied = true
     } else if (!this.isDied) {
 
-      let areAllOver50 = [this.hungryPoints, this.sleepyPoints, this.cleanPoints, this.happyPoints].every(points => points > 50);
-
+      this.isHappy = [this.hungryPoints, this.sleepyPoints, this.cleanPoints, this.happyPoints].every(points => points > 50);
       if (this.hungryPoints <= 1) {
         this.hungryPoints = 0;
       } else {
@@ -42,32 +40,15 @@ export class AppComponent implements OnInit {
       } else {
         this.happyPoints -= 2;
       }
-
-      if (!areAllOver50) {
-        this.isHappy = false
-      }
-      else if (areAllOver50) {
-        this.isHappy = true
-      }
     }
   }
 
-  private interval: any;
-
-
   ngOnInit() {
    this.interval = setInterval(this.gameTimer, 1000)
-
-    if (this.hungryPoints == 0 || this.sleepyPoints == 0 || this.cleanPoints == 0 || this.happyPoints == 0) {
-      this.stopGame()
-    }
   }
 
   startGame() {
     this.interval = setInterval(this.gameTimer, 1000)
-  }
-  stopGame() {
-    clearInterval(this.interval)
   }
 
   give5Points(points: number):number {
@@ -77,6 +58,7 @@ export class AppComponent implements OnInit {
       return points + 5;
     }
   }
+
   losePointsCollateral(points: number, deficit: number): number {
     if (points >= deficit) {
       return points - deficit
