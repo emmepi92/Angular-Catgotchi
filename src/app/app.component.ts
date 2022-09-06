@@ -85,21 +85,6 @@ export class AppComponent implements OnInit {
     this.hungryPoints = this.losePointsCollateral(this.hungryPoints, 3)
   }
 
-  gimme(something: string): any {
-    if (something == 'tuna') {
-      this.gimmeTuna()
-    }
-    if (something == 'sleep') {
-      this.gimmeSleep()
-    }
-    if (something == 'bath') {
-      this.gimmeBath()
-    }
-    if (something == 'rubs') {
-      this.gimmeRubs()
-    }
-  }
-
   onRestart() {
       this.hungryPoints = 100;
       this.sleepyPoints = 100;
